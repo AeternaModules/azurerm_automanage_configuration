@@ -1,3 +1,7 @@
+output "automanage_configurations_id" {
+  description = "Map of id values across all automanage_configurations, keyed the same as var.automanage_configurations"
+  value       = { for k, v in azurerm_automanage_configuration.automanage_configurations : k => v.id }
+}
 output "automanage_configurations_antimalware" {
   description = "Map of antimalware values across all automanage_configurations, keyed the same as var.automanage_configurations"
   value       = { for k, v in azurerm_automanage_configuration.automanage_configurations : k => v.antimalware }
