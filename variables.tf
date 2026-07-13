@@ -52,12 +52,12 @@ EOT
     location                    = string
     name                        = string
     resource_group_name         = string
-    automation_account_enabled  = optional(bool) # Default: false
-    boot_diagnostics_enabled    = optional(bool) # Default: false
-    defender_for_cloud_enabled  = optional(bool) # Default: false
-    guest_configuration_enabled = optional(bool) # Default: false
-    log_analytics_enabled       = optional(bool) # Default: false
-    status_change_alert_enabled = optional(bool) # Default: false
+    automation_account_enabled  = optional(bool)
+    boot_diagnostics_enabled    = optional(bool)
+    defender_for_cloud_enabled  = optional(bool)
+    guest_configuration_enabled = optional(bool)
+    log_analytics_enabled       = optional(bool)
+    status_change_alert_enabled = optional(bool)
     tags                        = optional(map(string))
     antimalware = optional(object({
       exclusions = optional(object({
@@ -65,42 +65,42 @@ EOT
         paths      = optional(string)
         processes  = optional(string)
       }))
-      real_time_protection_enabled   = optional(bool)   # Default: false
-      scheduled_scan_day             = optional(number) # Default: 8
-      scheduled_scan_enabled         = optional(bool)   # Default: false
-      scheduled_scan_time_in_minutes = optional(number) # Default: 0
-      scheduled_scan_type            = optional(string) # Default: "Quick"
+      real_time_protection_enabled   = optional(bool)
+      scheduled_scan_day             = optional(number)
+      scheduled_scan_enabled         = optional(bool)
+      scheduled_scan_time_in_minutes = optional(number)
+      scheduled_scan_type            = optional(string)
     }))
     azure_security_baseline = optional(object({
-      assignment_type = optional(string) # Default: "ApplyAndAutoCorrect"
+      assignment_type = optional(string)
     }))
     backup = optional(object({
-      instant_rp_retention_range_in_days = optional(number) # Default: 5
+      instant_rp_retention_range_in_days = optional(number)
       policy_name                        = optional(string)
       retention_policy = optional(object({
         daily_schedule = optional(object({
           retention_duration = optional(object({
             count         = optional(number)
-            duration_type = optional(string) # Default: "Days"
+            duration_type = optional(string)
           }))
           retention_times = optional(list(string))
         }))
-        retention_policy_type = optional(string) # Default: "LongTermRetentionPolicy"
+        retention_policy_type = optional(string)
         weekly_schedule = optional(object({
           retention_duration = optional(object({
             count         = optional(number)
-            duration_type = optional(string) # Default: "Weeks"
+            duration_type = optional(string)
           }))
           retention_times = optional(list(string))
         }))
       }))
       schedule_policy = optional(object({
-        schedule_policy_type   = optional(string) # Default: "SimpleSchedulePolicy"
+        schedule_policy_type   = optional(string)
         schedule_run_days      = optional(list(string))
-        schedule_run_frequency = optional(string) # Default: "Daily"
+        schedule_run_frequency = optional(string)
         schedule_run_times     = optional(list(string))
       }))
-      time_zone = optional(string) # Default: "UTC"
+      time_zone = optional(string)
     }))
   }))
 }
